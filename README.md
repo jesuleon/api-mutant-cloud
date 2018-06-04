@@ -5,7 +5,7 @@ Aplicación Mutant usando Google Cloud Engine en Java.
 
 ## Proyecto en desarrollo
 
-Actualmente no se almacenan los POST de los mutantes, se intentó con una BD mongo (normal y embedded) pero dió errores a nivel de deployment, para el futuro se prevee almacenarlos en un datastore habilitando al servicio stats a que muestre las estadísticas correctas del número existente de humanos y mutantes
+Actualmente no se almacenan los POST de los mutantes, se intentó con una BD mongo (normal y embedded, [ver branch](https://github.com/jesuleon/api-mutant-cloud/tree/feat/using-mongodb-embedded)) pero dió errores a nivel de deployment, para el futuro se prevee almacenarlos en un datastore habilitando al servicio stats a que muestre las estadísticas correctas del número existente de humanos y mutantes
 
 ## Productos
 - App Engine
