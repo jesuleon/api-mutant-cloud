@@ -16,6 +16,5 @@ public class BasicTest {
 
     @Before
     public void cleanData() {
-//        dnaService.deleteAll();
     }
 }
