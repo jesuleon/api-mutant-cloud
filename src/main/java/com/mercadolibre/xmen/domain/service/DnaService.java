@@ -11,11 +11,11 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class DnaService {
-//    private final DnaSequenceRepository dnaSequenceRepository;
+    private final DnaSequenceRepository dnaSequenceRepository;
 
-//    public DnaService(DnaSequenceRepository dnaSequenceRepository) {
-//        this.dnaSequenceRepository = dnaSequenceRepository;
-//    }
+    public DnaService(DnaSequenceRepository dnaSequenceRepository) {
+        this.dnaSequenceRepository = dnaSequenceRepository;
+    }
 
     /**
      * Posts a mutant
@@ -28,14 +28,14 @@ public class DnaService {
 
         DnaSequence dnaSequence = new DnaSequence(dna, isMutant);
 
-//        dnaSequenceRepository.save(dnaSequence);
+        dnaSequenceRepository.save(dnaSequence);
 
         return dnaSequence;
     }
 
-//    public void deleteAll() {
-//        dnaSequenceRepository.deleteAll();
-//    }
+    public void deleteAll() {
+        dnaSequenceRepository.deleteAll();
+    }
 
     /**
      * Returns stats about all dna
@@ -43,11 +43,10 @@ public class DnaService {
      * @return StatsResponse showing dna's stats
      */
     public Stats stats() {
-//        long mutants = dnaSequenceRepository.countByMutant(true);
-//        long humans = dnaSequenceRepository.countByMutant(false);
+        long mutants = dnaSequenceRepository.countByMutant(true);
+        long humans = dnaSequenceRepository.countByMutant(false);
 
-//        return new Stats(mutants, humans);
-        return new Stats(0, 0);
+        return new Stats(mutants, humans);
     }
 
     private boolean isMutant(String[] dna) {

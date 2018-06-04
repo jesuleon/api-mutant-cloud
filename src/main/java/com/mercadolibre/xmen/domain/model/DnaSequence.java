@@ -1,15 +1,15 @@
 package com.mercadolibre.xmen.domain.model;
 
-//import org.springframework.data.annotation.Id;
-//import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 import java.util.UUID;
 
 /**
  * Created by jesus.leon on 27/05/18.
  */
-//@Document
+@Document
 public class DnaSequence {
-//    @Id
+    @Id
     private UUID id;
     private String[] dna;
     private boolean mutant;

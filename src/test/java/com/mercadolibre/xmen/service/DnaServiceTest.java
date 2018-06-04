@@ -1,9 +1,8 @@
 package com.mercadolibre.xmen.service;
 
-import com.mercadolibre.xmen.domain.model.Stats;
 import com.mercadolibre.xmen.BasicTest;
+import com.mercadolibre.xmen.domain.model.Stats;
 import org.junit.Assert;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -49,7 +48,6 @@ public class DnaServiceTest extends BasicTest {
     }
 
     @Test
-    @Ignore
     public void statsWithOnlyMutants() {
         dnaService.postDna(MUTANT_DNA);
         dnaService.postDna(MUTANT_DNA);
@@ -59,7 +57,6 @@ public class DnaServiceTest extends BasicTest {
     }
 
     @Test
-    @Ignore
     public void stats() {
         dnaService.postDna(MUTANT_DNA);
         dnaService.postDna(HUMAN_DNA);

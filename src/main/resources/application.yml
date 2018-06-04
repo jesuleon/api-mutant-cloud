@@ -13,7 +13,7 @@ management:
       base-path: /
       exposure:
         include: health, info, metrics
-#spring:
-#  data:
-#    mongodb:
-#      database: xmen
+spring:
+  data:
+    mongodb:
+      database: xmen
