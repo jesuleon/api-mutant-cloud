@@ -13,9 +13,11 @@ Actualmente se almacenan los POST de los mutantes en una BD mongo embedded pero 
 ## Lenguaje
 - Java
 
-## Instrucciones
+## Instrucciones (uso local)
 
-1. Para postear un mutante ejecutar el servicio POST: https://mutant-205600.appspot.com/api/mutant/
+1. Luego de clonar el proyecto, ejecutar mvn spring-boot:run en la raíz local y el servidor levantará en el puerto por defecto 8080
+
+1. Para postear un mutante ejecutar el servicio POST: http://localhost:8080/api/mutant/
 
     Body:
         `{
@@ -24,7 +26,7 @@ Actualmente se almacenan los POST de los mutantes en una BD mongo embedded pero 
 
    Este servicio retornará 200-Ok si el dna enviado es un mutante y 403-Forbidden en caso contrario
 
-1. Para ver las estadísticas de las verificaciones de los ADN enviados ejecutar el servicio GET: https://mutant-205600.appspot.com/api/mutant/stats, este retornará un JSON como el que se puede ver a continuación:
+1. Para ver las estadísticas de las verificaciones de los ADN enviados ejecutar el servicio GET: http://localhost:8080/api/mutant/stats, este retornará un JSON como el que se puede ver a continuación:
 
     JSON:
         `{
