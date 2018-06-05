@@ -14,36 +14,36 @@ import org.springframework.test.context.junit4.SpringRunner;
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class DnaServiceTest extends BasicTest {
+public class DnaSequenceServiceTest extends BasicTest {
     @Test
     public void postMutantThenItIsMutant() {
-        Assert.assertEquals(true, dnaService.postDna(MUTANT_DNA).isMutant());
+        Assert.assertEquals(true, dnaSequenceService.postDna(MUTANT_DNA).isMutant());
     }
 
     @Test
     public void postMutantThenItIsNotAMutant() {
-        Assert.assertEquals(false, dnaService.postDna(HUMAN_DNA).isMutant());
+        Assert.assertEquals(false, dnaSequenceService.postDna(HUMAN_DNA).isMutant());
     }
 
     @Test
     public void postMutantWithNxNWithNLessToFour() {
         String[] dna = new String[] { "ATG", "CAG", "TTA" };
 
-        Assert.assertEquals(false, dnaService.postDna(dna).isMutant());
+        Assert.assertEquals(false, dnaSequenceService.postDna(dna).isMutant());
     }
 
     @Test
     public void statsWithoutDna() {
-        Stats stats = dnaService.stats();
+        Stats stats = dnaSequenceService.stats();
         Assert.assertEquals(0.0, stats.getRatio(), 0.0000001);
     }
 
     @Test
     public void statsWithOnlyHumans() {
-        dnaService.postDna(HUMAN_DNA);
-        dnaService.postDna(HUMAN_DNA);
-        dnaService.postDna(HUMAN_DNA);
-        Stats stats = dnaService.stats();
+        dnaSequenceService.postDna(HUMAN_DNA);
+        dnaSequenceService.postDna(HUMAN_DNA);
+        dnaSequenceService.postDna(HUMAN_DNA);
+        Stats stats = dnaSequenceService.stats();
 
         Assert.assertEquals(0.0, stats.getRatio(), 0.000001);
     }
@@ -51,21 +51,21 @@ public class DnaServiceTest extends BasicTest {
     @Test
     @Ignore
     public void statsWithOnlyMutants() {
-        dnaService.postDna(MUTANT_DNA);
-        dnaService.postDna(MUTANT_DNA);
-        dnaService.postDna(MUTANT_DNA);
+        dnaSequenceService.postDna(MUTANT_DNA);
+        dnaSequenceService.postDna(MUTANT_DNA);
+        dnaSequenceService.postDna(MUTANT_DNA);
 
-        Assert.assertEquals(3.0, dnaService.stats().getRatio(), 0.000001);
+        Assert.assertEquals(3.0, dnaSequenceService.stats().getRatio(), 0.000001);
     }
 
     @Test
     @Ignore
     public void stats() {
-        dnaService.postDna(MUTANT_DNA);
-        dnaService.postDna(HUMAN_DNA);
-        dnaService.postDna(HUMAN_DNA);
+        dnaSequenceService.postDna(MUTANT_DNA);
+        dnaSequenceService.postDna(HUMAN_DNA);
+        dnaSequenceService.postDna(HUMAN_DNA);
 
-        Stats stats = dnaService.stats();
+        Stats stats = dnaSequenceService.stats();
 
         Assert.assertEquals(0.5, stats.getRatio(), 0.000001);
     }

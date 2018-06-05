@@ -9,7 +9,9 @@ import org.springframework.stereotype.Service;
  * Created by jesus.leon on 27/05/18.
  */
 @Service
-public class DnaService {
+public class DnaSequenceService {
+    private DnaSequenceImpl dnaSequenceImpl = new DnaSequenceImpl();
+
     /**
      * Posts a mutant
      *
@@ -21,7 +23,13 @@ public class DnaService {
 
         DnaSequence dnaSequence = new DnaSequence(dna, isMutant);
 
+        dnaSequenceImpl.save(dnaSequence);
+
         return dnaSequence;
+    }
+
+    public void deleteAll() {
+        dnaSequenceImpl.deleteAll();
     }
 
     /**
@@ -30,7 +38,7 @@ public class DnaService {
      * @return StatsResponse showing dna's stats
      */
     public Stats stats() {
-        return new Stats(0, 0);
+        return dnaSequenceImpl.stats();
     }
 
     private boolean isMutant(String[] dna) {

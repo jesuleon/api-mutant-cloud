@@ -1,5 +1,6 @@
 package com.mercadolibre.xmen.controller;
 
+import com.mercadolibre.xmen.BasicTest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.http.MediaType;
@@ -16,7 +17,7 @@ import static org.junit.Assert.assertNotNull;
  * Created by jesus.leon on 06/07/17.
  */
 @AutoConfigureMockMvc
-public class ControllerTest {
+public class ControllerTest extends BasicTest {
     protected HttpMessageConverter mappingJackson2HttpMessageConverter;
 
     protected MediaType contentType = new MediaType(MediaType.APPLICATION_JSON.getType(),

@@ -1,6 +1,6 @@
 package com.mercadolibre.xmen;
 
-import com.mercadolibre.xmen.domain.service.DnaService;
+import com.mercadolibre.xmen.domain.service.DnaSequenceService;
 import org.junit.Before;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -12,9 +12,10 @@ public class BasicTest {
     protected String[] HUMAN_DNA = new String[] { "TTGCAA", "CAGTGC", "TTATGT", "AGAAGG", "CCCCTA", "TCACTG" };
 
     @Autowired
-    protected DnaService dnaService;
+    protected DnaSequenceService dnaSequenceService;
 
     @Before
     public void cleanData() {
+        dnaSequenceService.deleteAll();
     }
 }

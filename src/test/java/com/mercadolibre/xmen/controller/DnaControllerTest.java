@@ -48,6 +48,36 @@ public class DnaControllerTest extends ControllerTest {
     }
 
     @Test
+    public void postMutant() throws Exception {
+        DnaRequest dnaRequest = new DnaRequest(MUTANT_DNA);
+
+        String content = json(dnaRequest);
+
+        mvc.perform(MockMvcRequestBuilders.post("/")
+                .content(content)
+                .contentType(contentType)
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+        ;
+    }
+
+    @Test
+    public void postHuman() throws Exception {
+        String[] dna = new String[] { "CTGCGA", "CAGTGC", "TTACGT", "AGAAGG", "CTCCTA" , "AAATTT"};
+
+        DnaRequest dnaRequest = new DnaRequest(dna);
+
+        String content = json(dnaRequest);
+
+        mvc.perform(MockMvcRequestBuilders.post("/")
+                .content(content)
+                .contentType(contentType)
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isForbidden())
+        ;
+    }
+
+    @Test
     public void postMutantWithRequestNull() throws Exception {
         String content = json(null);
 

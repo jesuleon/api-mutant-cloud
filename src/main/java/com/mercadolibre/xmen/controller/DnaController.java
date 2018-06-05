@@ -1,9 +1,14 @@
 package com.mercadolibre.xmen.controller;
 
+import com.googlecode.objectify.Key;
+import com.googlecode.objectify.LoadResult;
+import com.googlecode.objectify.ObjectifyService;
+import com.googlecode.objectify.VoidWork;
 import com.mercadolibre.xmen.api.DnaRequest;
 import com.mercadolibre.xmen.api.StatsResponse;
+import com.mercadolibre.xmen.domain.model.DnaSequence;
 import com.mercadolibre.xmen.domain.model.Stats;
-import com.mercadolibre.xmen.domain.service.DnaService;
+import com.mercadolibre.xmen.domain.service.DnaSequenceService;
 import com.mercadolibre.xmen.validator.DnaInRange;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -22,17 +27,25 @@ import javax.validation.Valid;
 @RestController("/")
 @Validated
 public class DnaController {
-    private final DnaService dnaService;
+    private final DnaSequenceService dnaSequenceService;
 
     @Autowired
-    public DnaController(DnaService dnaService) {
-        this.dnaService = dnaService;
+    public DnaController(DnaSequenceService dnaSequenceService) {
+        this.dnaSequenceService = dnaSequenceService;
     }
 
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Boolean> postDna(
             @Valid @DnaInRange @RequestBody DnaRequest dnaRequest) {
-        if (dnaService.postDna(dnaRequest.getDna()).isMutant()) {
+        //        if (dnaSequenceService.postDna(dnaRequest.getDna()).isMutant()) {
+        //            return ResponseEntity.ok().build();
+        //        } else {
+        //            return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
+        //        }
+
+        DnaSequence dnaSequence = dnaSequenceService.postDna(dnaRequest.getDna());
+
+        if (dnaSequence.isMutant()) {
             return ResponseEntity.ok().build();
         } else {
             return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
@@ -41,7 +54,7 @@ public class DnaController {
 
     @GetMapping("/stats")
     public ResponseEntity<StatsResponse> stats() {
-        return ResponseEntity.ok(transform(dnaService.stats()));
+        return ResponseEntity.ok(transform(dnaSequenceService.stats()));
     }
 
     private StatsResponse transform(Stats stats) {
