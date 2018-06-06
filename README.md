@@ -3,10 +3,6 @@ API - mutant - cloud
 
 Aplicación Mutant usando Google Cloud Engine en Java.
 
-## Proyecto en desarrollo
-
-Actualmente no se almacenan los POST de los mutantes, se intentó con una BD mongo (normal y embedded, [ver branch](https://github.com/jesuleon/api-mutant-cloud/tree/feat/using-mongodb-embedded)) pero dió errores a nivel de deployment, para el futuro se prevee almacenarlos en un datastore habilitando al servicio stats a que muestre las estadísticas correctas del número existente de humanos y mutantes
-
 ## Productos
 - App Engine
 
@@ -15,7 +11,7 @@ Actualmente no se almacenan los POST de los mutantes, se intentó con una BD mon
 
 ## Instrucciones
 
-1. Para postear un mutante ejecutar el servicio POST: https://mutant-205600.appspot.com/api/mutant/
+1. Para postear un mutante ejecutar el servicio POST: https://x-men-206104.appspot.com/api/mutant/
 
     Body:
         `{
@@ -24,7 +20,7 @@ Actualmente no se almacenan los POST de los mutantes, se intentó con una BD mon
 
    Este servicio retornará 200-Ok si el dna enviado es un mutante y 403-Forbidden en caso contrario
 
-1. Para ver las estadísticas de las verificaciones de los ADN enviados ejecutar el servicio GET: https://mutant-205600.appspot.com/api/mutant/stats, este retornará un JSON como el que se puede ver a continuación:
+1. Para ver las estadísticas de las verificaciones de los ADN enviados ejecutar el servicio GET: https://x-men-206104.appspot.com/api/mutant/stats, este retornará un JSON como el que se puede ver a continuación:
 
     JSON:
         `{
