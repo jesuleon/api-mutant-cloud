@@ -54,11 +54,11 @@ public class DnaSequenceImpl implements DnaSequenceRepository {
         ObjectifyService.run(new VoidWork() {
 
             public void vrun() {
-                result[0] = ObjectifyService.ofy().load().type(DnaSequence.class).filter("mutant", "true").list()
-                        .size();
+                // FIXME jesus.leon possible memory error in the future
+                List<DnaSequence> streamList = ObjectifyService.ofy().load().type(DnaSequence.class).list();
 
-                result[1] = ObjectifyService.ofy().load().type(DnaSequence.class).filter("mutant", "false").list()
-                        .size();
+                result[0] = streamList.stream().filter(c -> c.isMutant()).count();
+                result[1] = streamList.stream().filter(c -> !c.isMutant()).count();
             }
         });
 

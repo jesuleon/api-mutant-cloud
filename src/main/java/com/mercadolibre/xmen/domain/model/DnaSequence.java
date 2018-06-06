@@ -16,6 +16,9 @@ public class DnaSequence {
     private String[] dna;
     private boolean mutant;
 
+    private DnaSequence() {
+    }
+
     public DnaSequence(String[] dna, boolean mutant) {
         id = Calendar.getInstance().getTime().getTime();
 

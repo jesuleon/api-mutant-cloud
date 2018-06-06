@@ -49,7 +49,6 @@ public class DnaSequenceServiceTest extends BasicTest {
     }
 
     @Test
-    @Ignore
     public void statsWithOnlyMutants() {
         dnaSequenceService.postDna(MUTANT_DNA);
         dnaSequenceService.postDna(MUTANT_DNA);
@@ -59,7 +58,6 @@ public class DnaSequenceServiceTest extends BasicTest {
     }
 
     @Test
-    @Ignore
     public void stats() {
         dnaSequenceService.postDna(MUTANT_DNA);
         dnaSequenceService.postDna(HUMAN_DNA);
